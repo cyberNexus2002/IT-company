@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Company Login</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+        }
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .login-btn {
+            background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card p-8">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">IT Crew Login</h2>
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    class="input-field w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="input-field w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+            <button 
+                type="submit" 
+                class="login-btn w-full py-3 px-4 rounded-lg text-white font-semibold"
+            >
+                Login
+            </button>
+        </form>
+        <p id="errorMsg" class="text-red-500 text-sm mt-4 hidden">Invalid credentials. Please try again.</p>
+    </div>
+
+    <script>
+        // Predefined credentials for 4 members
+        const validCredentials = [
+            { username: "sithum", password: "sithum2002" },
+            { username: "jane_smith", password: "jane456" },
+            { username: "alex_wilson", password: "alex789" },
+            { username: "emma_brown", password: "emma101" }
+        ];
+
+        // GSAP animations
+        gsap.from(".login-card", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".input-field, .login-btn", {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out",
+            delay: 0.5
+        });
+
+        // Form submission handling
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMsg = document.getElementById("errorMsg");
+
+            // Check credentials
+            const isValid = validCredentials.some(cred => 
+                cred.username === username && cred.password === password
+            );
+
+            if (isValid) {
+                // Animate before redirect
+                gsap.to(".login-card", {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.5,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        window.location.href = "home.html";
+                    }
+                });
+            } else {
+                errorMsg.classList.remove("hidden");
+                gsap.fromTo("#errorMsg", 
+                    { opacity: 0, y: 10 },
+                    { opacity: 1, y: 0, duration: 0.5 }
+                );
+            }
+        });
+    </script>
+</body>
+</html>
