@@ -92,6 +92,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            min-width: 40px;
         }
 
         /* Responsive adjustments */
@@ -101,7 +102,7 @@
                 padding: 1.5rem;
             }
             .grid-cols-2 {
-                grid-template-columns: 1尾;
+                grid-template-columns: 1fr;
             }
             .team-member {
                 padding: 0.75rem;
@@ -109,6 +110,33 @@
             .member-image {
                 width: 36px;
                 height: 36px;
+                min-width: 36px;
+            }
+            .team-member div {
+                flex-grow: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            .w-16 {
+                width: 3rem;
+                height: 3rem;
+            }
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            .input-field {
+                padding: 0.5rem 1rem;
+            }
+            .team-member {
+                padding: 0.5rem;
             }
         }
     </style>
@@ -194,10 +222,16 @@
                 <a href="#" class="text-sm text-blue-400 hover:text-blue-300">Forgot password?</a>
             </div>
             
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center">
-                <span id="loginText">Login</span>
-                <i class="fas fa-arrow-right ml-2" id="loginIcon"></i>
-            </button>
+            <div class="flex gap-3">
+                <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                    <span id="loginText">Login</span>
+                    <i class="fas fa-arrow-right ml-2" id="loginIcon"></i>
+                </button>
+                <button type="button" onclick="navigateToUser()" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                    <span>User</span>
+                    <i class="fas fa-user ml-2"></i>
+                </button>
+            </div>
         </form>
         
         <div class="mt-6 text-center text-sm text-gray-400">
@@ -225,7 +259,7 @@
             const emailField = document.getElementById('email');
             const passwordField = document.getElementById('password');
             
-            switch(memberId) {
+            /*switch(memberId) {
                 case 1:
                     emailField.value = 'sithum@gmail.com';
                     passwordField.value = 'sithum@0213';
@@ -242,7 +276,7 @@
                     emailField.value = 'haritha@gmail.com';
                     passwordField.value = 'haritha@2003';
                     break;
-            }
+            }*/
         }
         
         // Toggle password visibility
@@ -259,6 +293,11 @@
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
             }
+        }
+        
+        // Navigate to user page
+        function navigateToUser() {
+            window.location.href = 'home.html';
         }
         
         // Handle form submission
@@ -283,12 +322,13 @@
             
             // Simulate authentication delay
             setTimeout(() => {
-                // Check if credentials match any of the team members
+                // Check if credentials match any of the team members or admin
                 const validCredentials = [
                     {email: 'sithum@gmail.com', password: 'sithum@0213'},
                     {email: 'vidura@gmail.com', password: 'vidura@2001'},
                     {email: 'senura@gmail.com', password: 'senura@2002'},
-                    {email: 'haritha@gmail.com', password: 'haritha@2003'}
+                    {email: 'haritha@gmail.com', password: 'haritha@2003'},
+                    {email: 'admin@cybernexus.com', password: 'admin@1234'}
                 ];
                 
                 const isValid = validCredentials.some(cred => cred.email === email && cred.password === password);
