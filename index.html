@@ -12,8 +12,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow: auto;
         }
         
         .login-card {
@@ -86,6 +86,31 @@
         .glow {
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
         }
+
+        .member-image {
+            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .login-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .grid-cols-2 {
+                grid-template-columns: 1尾;
+            }
+            .team-member {
+                padding: 0.75rem;
+            }
+            .member-image {
+                width: 36px;
+                height: 36px;
+            }
+        }
     </style>
 </head>
 <body class="text-white flex items-center justify-center">
@@ -105,54 +130,41 @@
             <div class="grid grid-cols-2 gap-3">
                 <!-- Team Member 1 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-blue-900/50 to-blue-800/30 flex items-center" onclick="selectMember(1)">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="images/member1.jpg" alt="Sithum Buddhika" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Sithum Buddhika</p>
                         <p class="text-xs text-gray-400">Website and Mobile Development</p>
-                                                <p class="text-xs text-gray-400">CEO</p>
-
+                        <p class="text-xs text-gray-400">CEO</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-purple-900/50 to-purple-800/30 flex items-center" onclick="selectMember(2)">
-                    <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center mr-3">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="images/member2.jpg" alt="Vidura Yasassri" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Vidura Yasassri</p>
                         <p class="text-xs text-gray-400">Web Development</p>
-                                                                        <p class="text-xs text-gray-400">CEO</p>
-
+                        <p class="text-xs text-gray-400">CEO</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 3 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-green-900/50 to-green-800/30 flex items-center" onclick="selectMember(3)">
-                    <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="images/member3.jpg" alt="Senura Sanketh" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Senura Sanketh</p>
                         <p class="text-xs text-gray-400">Web Development</p>
-                        
-                                                                        <p class="text-xs text-gray-400">CEO</p>
-
+                        <p class="text-xs text-gray-400">CEO</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 4 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-amber-900/50 to-amber-800/30 flex items-center" onclick="selectMember(4)">
-                    <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center mr-3">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="images/member4.jpg" alt="Haritha Geemal" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Haritha Geemal</p>
                         <p class="text-xs text-gray-400">Web Development</p>
-                                                                        <p class="text-xs text-gray-400">CEO</p>
-
+                        <p class="text-xs text-gray-400">CEO</p>
                     </div>
                 </div>
             </div>
@@ -213,24 +225,24 @@
             const emailField = document.getElementById('email');
             const passwordField = document.getElementById('password');
             
-            /*switch(memberId) {
+            switch(memberId) {
                 case 1:
-                    emailField.value = 'alex.johnson@technova.com';
-                    passwordField.value = 'alex1234';
+                    emailField.value = 'sithum@gmail.com';
+                    passwordField.value = 'sithum@0213';
                     break;
                 case 2:
-                    emailField.value = 'sarah.williams@technova.com';
-                    passwordField.value = 'sarah1234';
+                    emailField.value = 'vidura@gmail.com';
+                    passwordField.value = 'vidura@2001';
                     break;
                 case 3:
-                    emailField.value = 'michael.chen@technova.com';
-                    passwordField.value = 'michael1234';
+                    emailField.value = 'senura@gmail.com';
+                    passwordField.value = 'senura@2002';
                     break;
                 case 4:
-                    emailField.value = 'emily.davis@technova.com';
-                    passwordField.value = 'emily1234';
+                    emailField.value = 'haritha@gmail.com';
+                    passwordField.value = 'haritha@2003';
                     break;
-            }*/
+            }
         }
         
         // Toggle password visibility
@@ -265,7 +277,7 @@
             }
             
             // Change button to loading state
-            loginText.textContent = 'Authenticating...';
+            loginText.textContent = "Authenticating…";
             loginIcon.classList.remove('fa-arrow-right');
             loginIcon.classList.add('fa-spinner', 'fa-spin');
             
