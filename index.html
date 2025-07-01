@@ -3,136 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Company Login</title>
-    <!-- Tailwind CSS CDN -->
+    <title>TechNova | Employee Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP CDN for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         body {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-        }
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            height: 100vh;
             overflow: hidden;
-            width: 100%;
-            max-width: 400px;
         }
-        .input-field {
+        
+        .login-card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             transition: all 0.3s ease;
         }
+        
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
         .input-field:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
         }
-        .login-btn {
-            background: linear-gradient(90deg, #3b82f6, #1e3a8a);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        .team-member {
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-member.active {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
         }
     </style>
 </head>
-<body>
-    <div class="login-card p-8">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">IT Crew Login</h2>
+<body class="text-white flex items-center justify-center">
+    <div class="login-card w-full max-w-md p-8 fade-in">
+        <div class="text-center mb-8">
+            <div class="flex justify-center mb-4">
+                <div class="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center pulse">
+                    <i class="fas fa-lock-open text-2xl"></i>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold mb-2 glow">TechNova</h1>
+            <p class="text-gray-300">Employee Portal Login</p>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3">Select your profile</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Team Member 1 -->
+                <div class="team-member p-3 rounded-lg bg-gradient-to-br from-blue-900/50 to-blue-800/30 flex items-center" onclick="selectMember(1)">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Alex Johnson</p>
+                        <p class="text-xs text-gray-400">CTO</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member p-3 rounded-lg bg-gradient-to-br from-purple-900/50 to-purple-800/30 flex items-center" onclick="selectMember(2)">
+                    <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Sarah Williams</p>
+                        <p class="text-xs text-gray-400">Lead Developer</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member p-3 rounded-lg bg-gradient-to-br from-green-900/50 to-green-800/30 flex items-center" onclick="selectMember(3)">
+                    <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Michael Chen</p>
+                        <p class="text-xs text-gray-400">UX Designer</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member p-3 rounded-lg bg-gradient-to-br from-amber-900/50 to-amber-800/30 flex items-center" onclick="selectMember(4)">
+                    <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Emily Davis</p>
+                        <p class="text-xs text-gray-400">Project Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <form id="loginForm" class="space-y-4">
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-                <input 
-                    type="text" 
-                    id="username" 
-                    class="input-field w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                    placeholder="Enter your username"
-                    required
-                >
+                <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" id="email" class="w-full px-4 py-3 input-field focus:outline-none" placeholder="your@email.com" required>
             </div>
+            
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    class="input-field w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                    placeholder="Enter your password"
-                    required
-                >
+                <label for="password" class="block text-sm font-medium mb-1">Password</label>
+                <div class="relative">
+                    <input type="password" id="password" class="w-full px-4 py-3 input-field focus:outline-none pr-10" placeholder="••••••••" required>
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onclick="togglePassword()">
+                        <i class="fas fa-eye-slash text-gray-400 hover:text-white"></i>
+                    </div>
+                </div>
             </div>
-            <button 
-                type="submit" 
-                class="login-btn w-full py-3 px-4 rounded-lg text-white font-semibold"
-            >
-                Login
+            
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                    <label for="remember" class="ml-2 block text-sm">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-blue-400 hover:text-blue-300">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                <span id="loginText">Login</span>
+                <i class="fas fa-arrow-right ml-2" id="loginIcon"></i>
             </button>
         </form>
-        <p id="errorMsg" class="text-red-500 text-sm mt-4 hidden">Invalid credentials. Please try again.</p>
+        
+        <div class="mt-6 text-center text-sm text-gray-400">
+            <p>New employee? <a href="#" class="text-blue-400 hover:text-blue-300">Contact HR</a></p>
+        </div>
     </div>
 
     <script>
-        // Predefined credentials for 4 members
-        const validCredentials = [
-            { username: "sithum", password: "sithum2002" },
-            { username: "jane_smith", password: "jane456" },
-            { username: "alex_wilson", password: "alex789" },
-            { username: "emma_brown", password: "emma101" }
-        ];
-
-        // GSAP animations
-        gsap.from(".login-card", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power3.out"
-        });
-
-        gsap.from(".input-field, .login-btn", {
-            opacity: 0,
-            y: 20,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power2.out",
-            delay: 0.5
-        });
-
-        // Form submission handling
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            const errorMsg = document.getElementById("errorMsg");
-
-            // Check credentials
-            const isValid = validCredentials.some(cred => 
-                cred.username === username && cred.password === password
-            );
-
-            if (isValid) {
-                // Animate before redirect
-                gsap.to(".login-card", {
-                    opacity: 0,
-                    scale: 0.8,
-                    duration: 0.5,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        window.location.href = "home.html";
-                    }
-                });
-            } else {
-                errorMsg.classList.remove("hidden");
-                gsap.fromTo("#errorMsg", 
-                    { opacity: 0, y: 10 },
-                    { opacity: 1, y: 0, duration: 0.5 }
-                );
+        // Selected member variable
+        let selectedMember = null;
+        
+        // Select team member function
+        function selectMember(memberId) {
+            selectedMember = memberId;
+            
+            // Remove active class from all members
+            document.querySelectorAll('.team-member').forEach(member => {
+                member.classList.remove('active');
+            });
+            
+            // Add active class to selected member
+            event.currentTarget.classList.add('active');
+            
+            // Auto-fill credentials based on selected member
+            const emailField = document.getElementById('email');
+            const passwordField = document.getElementById('password');
+            
+            switch(memberId) {
+                case 1:
+                    emailField.value = 'alex.johnson@technova.com';
+                    passwordField.value = 'alex1234';
+                    break;
+                case 2:
+                    emailField.value = 'sarah.williams@technova.com';
+                    passwordField.value = 'sarah1234';
+                    break;
+                case 3:
+                    emailField.value = 'michael.chen@technova.com';
+                    passwordField.value = 'michael1234';
+                    break;
+                case 4:
+                    emailField.value = 'emily.davis@technova.com';
+                    passwordField.value = 'emily1234';
+                    break;
             }
+        }
+        
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const icon = event.currentTarget.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginText = document.getElementById('loginText');
+            const loginIcon = document.getElementById('loginIcon');
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Change button to loading state
+            loginText.textContent = 'Authenticating...';
+            loginIcon.classList.remove('fa-arrow-right');
+            loginIcon.classList.add('fa-spinner', 'fa-spin');
+            
+            // Simulate authentication delay
+            setTimeout(() => {
+                // Check if credentials match any of the team members
+                const validCredentials = [
+                    {email: 'alex.johnson@technova.com', password: 'alex1234'},
+                    {email: 'sarah.williams@technova.com', password: 'sarah1234'},
+                    {email: 'michael.chen@technova.com', password: 'michael1234'},
+                    {email: 'emily.davis@technova.com', password: 'emily1234'}
+                ];
+                
+                const isValid = validCredentials.some(cred => cred.email === email && cred.password === password);
+                
+                if (isValid) {
+                    // Success - redirect to home.html
+                    window.location.href = 'home.html';
+                } else {
+                    // Error - reset form
+                    alert('Invalid credentials. Please try again.');
+                    loginText.textContent = 'Login';
+                    loginIcon.classList.remove('fa-spinner', 'fa-spin');
+                    loginIcon.classList.add('fa-arrow-right');
+                }
+            }, 1500);
+        });
+        
+        // Add animation to elements on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const members = document.querySelectorAll('.team-member');
+            members.forEach((member, index) => {
+                member.style.animationDelay = `${index * 0.1}s`;
+                member.classList.add('fade-in');
+            });
         });
     </script>
 </body>
