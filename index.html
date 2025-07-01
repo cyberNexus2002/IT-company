@@ -96,7 +96,7 @@
                     <i class="fas fa-lock-open text-2xl"></i>
                 </div>
             </div>
-            <h1 class="text-3xl font-bold mb-2 glow">TechNova</h1>
+            <h1 class="text-3xl font-bold mb-2 glow">CyberNexus</h1>
             <p class="text-gray-300">Employee Portal Login</p>
         </div>
         
@@ -109,8 +109,10 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <p class="font-medium">Alex Johnson</p>
-                        <p class="text-xs text-gray-400">CTO</p>
+                        <p class="font-medium">Sithum Buddhika</p>
+                        <p class="text-xs text-gray-400">Website and Mobile Development</p>
+                                                <p class="text-xs text-gray-400">CEO</p>
+
                     </div>
                 </div>
                 
@@ -120,8 +122,10 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <p class="font-medium">Sarah Williams</p>
-                        <p class="text-xs text-gray-400">Lead Developer</p>
+                        <p class="font-medium">Vidura Yasassri</p>
+                        <p class="text-xs text-gray-400">Web Development</p>
+                                                                        <p class="text-xs text-gray-400">CEO</p>
+
                     </div>
                 </div>
                 
@@ -131,8 +135,11 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <p class="font-medium">Michael Chen</p>
-                        <p class="text-xs text-gray-400">UX Designer</p>
+                        <p class="font-medium">Senura Sanketh</p>
+                        <p class="text-xs text-gray-400">Web Development</p>
+                        
+                                                                        <p class="text-xs text-gray-400">CEO</p>
+
                     </div>
                 </div>
                 
@@ -142,8 +149,10 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <p class="font-medium">Emily Davis</p>
-                        <p class="text-xs text-gray-400">Project Manager</p>
+                        <p class="font-medium">Haritha Geemal</p>
+                        <p class="text-xs text-gray-400">Web Development</p>
+                                                                        <p class="text-xs text-gray-400">CEO</p>
+
                     </div>
                 </div>
             </div>
@@ -204,7 +213,7 @@
             const emailField = document.getElementById('email');
             const passwordField = document.getElementById('password');
             
-            switch(memberId) {
+            /*switch(memberId) {
                 case 1:
                     emailField.value = 'alex.johnson@technova.com';
                     passwordField.value = 'alex1234';
@@ -221,7 +230,7 @@
                     emailField.value = 'emily.davis@technova.com';
                     passwordField.value = 'emily1234';
                     break;
-            }
+            }*/
         }
         
         // Toggle password visibility
@@ -264,10 +273,10 @@
             setTimeout(() => {
                 // Check if credentials match any of the team members
                 const validCredentials = [
-                    {email: 'alex.johnson@technova.com', password: 'alex1234'},
-                    {email: 'sarah.williams@technova.com', password: 'sarah1234'},
-                    {email: 'michael.chen@technova.com', password: 'michael1234'},
-                    {email: 'emily.davis@technova.com', password: 'emily1234'}
+                    {email: 'sithum@gmail.com', password: 'sithum@0213'},
+                    {email: 'vidura@gmail.com', password: 'vidura@2001'},
+                    {email: 'senura@gmail.com', password: 'senura@2002'},
+                    {email: 'haritha@gmail.com', password: 'haritha@2003'}
                 ];
                 
                 const isValid = validCredentials.some(cred => cred.email === email && cred.password === password);
