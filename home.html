@@ -21,10 +21,6 @@
             color: transparent;
         }
         
-        .hero-gradient {
-            background: linear-gradient(135deg, #1E3A8A 0%, #111827 100%);
-        }
-        
         .card-hover {
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
@@ -127,27 +123,38 @@
             transform: translateX(8px);
         }
 
-        /* New parallax effect for hero */
-        .parallax-bg {
-            background: url('https://images.unsplash.com/photo-1639322537228-f7144f670b9e') no-repeat center center;
-            background-size: cover;
+        /* Liquid glass effect for navigation */
+        .liquid-glass-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .liquid-glass-nav.scrolled {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px) saturate(200%);
+            -webkit-backdrop-filter: blur(12px) saturate(200%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Video background for hero section */
+        .video-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            transform: scale(1.1);
-            transition: transform 0.1s ease;
-        }
-        
-        .hero-section:hover .parallax-bg {
-            transform: scale(1.15);
+            object-fit: cover;
+            z-index: 0;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white bg-opacity-95 backdrop-blur-md z-50 transition-all duration-500">
+    <nav class="fixed w-full liquid-glass-nav z-50 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
@@ -189,8 +196,10 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section relative h-screen flex items-center justify-center text-white overflow-hidden">
-        <div class="parallax-bg"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/80 to-gray-900/90"></div>
+        <video class="video-bg" autoplay loop muted playsinline>
+            <source src="videos/back.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-12 lg:gap-12">
                 <div class="lg:col-span-7 text-center lg:text-left">
@@ -771,7 +780,7 @@
                 <div class="mt-12 lg:mt-0 lg:col-span-7">
                     <div class="bg-white shadow-2xl rounded-2xl overflow-hidden">
                         <div class="px-8 py-10 sm:p-12">
-                            <div onSubmit="handleSubmit(event)">
+                            <form onsubmit="handleSubmit(event)">
                                 <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                                     <div>
                                         <label for="first-name" class="block text-sm font-semibold text-gray-700">First name</label>
@@ -815,7 +824,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -912,15 +921,13 @@
             });
         });
 
-        // Navbar shadow and transparency on scroll
+        // Navbar liquid glass effect on scroll
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.classList.add('shadow-2xl', 'bg-white');
-                nav.classList.remove('bg-opacity-95');
+                nav.classList.add('scrolled');
             } else {
-                nav.classList.remove('shadow-2xl');
-                nav.classList.add('bg-opacity-95');
+                nav.classList.remove('scrolled');
             }
         });
 
@@ -945,23 +952,8 @@
         function handleSubmit(e) {
             e.preventDefault();
             alert('Thank you for your message! Our team will respond within 24 hours.');
-            e.target.closest('div').querySelector('form').reset();
+            e.target.closest('form').reset();
         }
-
-        // Parallax effect on mouse move
-        const heroSection = document.querySelector('.hero-section');
-        heroSection.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            const parallax = document.querySelector('.parallax-bg');
-            parallax.style.transform = `scale(1.1) translate(${x * 20}px, ${y * 20}px)`;
-        });
-
-        heroSection.addEventListener('mouseleave', () => {
-            const parallax = document.querySelector('.parallax-bg');
-            parallax.style.transform = 'scale(1.1)';
-        });
     </script>
 </body>
 </html>
