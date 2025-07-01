@@ -87,14 +87,6 @@
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
         }
 
-        .member-image {
-            object-fit: cover;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            min-width: 40px;
-        }
-
         /* Responsive adjustments */
         @media (max-width: 640px) {
             .login-card {
@@ -106,11 +98,6 @@
             }
             .team-member {
                 padding: 0.75rem;
-            }
-            .member-image {
-                width: 36px;
-                height: 36px;
-                min-width: 36px;
             }
             .team-member div {
                 flex-grow: 1;
@@ -158,7 +145,6 @@
             <div class="grid grid-cols-2 gap-3">
                 <!-- Team Member 1 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-blue-900/50 to-blue-800/30 flex items-center" onclick="selectMember(1)">
-                    <img src="images/member1.jpg" alt="Sithum Buddhika" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Sithum Buddhika</p>
                         <p class="text-xs text-gray-400">Website and Mobile Development</p>
@@ -168,7 +154,6 @@
                 
                 <!-- Team Member 2 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-purple-900/50 to-purple-800/30 flex items-center" onclick="selectMember(2)">
-                    <img src="images/member2.jpg" alt="Vidura Yasassri" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Vidura Yasassri</p>
                         <p class="text-xs text-gray-400">Web Development</p>
@@ -178,7 +163,6 @@
                 
                 <!-- Team Member 3 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-green-900/50 to-green-800/30 flex items-center" onclick="selectMember(3)">
-                    <img src="images/member3.jpg" alt="Senura Sanketh" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Senura Sanketh</p>
                         <p class="text-xs text-gray-400">Web Development</p>
@@ -188,7 +172,6 @@
                 
                 <!-- Team Member 4 -->
                 <div class="team-member p-3 rounded-lg bg-gradient-to-br from-amber-900/50 to-amber-800/30 flex items-center" onclick="selectMember(4)">
-                    <img src="images/member4.jpg" alt="Haritha Geemal" class="member-image mr-3">
                     <div>
                         <p class="font-medium">Haritha Geemal</p>
                         <p class="text-xs text-gray-400">Web Development</p>
@@ -235,7 +218,7 @@
         </form>
         
         <div class="mt-6 text-center text-sm text-gray-400">
-            <p>New employee? <a href="#" class="text-blue-400 hover:text-blue-300">Contact HR</a></p>
+            <p>New employee? <a href="#" class class="text-blue-400 hover:text-blue-300">Contact HR</a></p>
         </div>
     </div>
 
@@ -259,10 +242,10 @@
             const emailField = document.getElementById('email');
             const passwordField = document.getElementById('password');
             
-            /*switch(memberId) {
+            switch(memberId) {
                 case 1:
-                    emailField.value = '';
-                    passwordField.value = '';
+                    emailField.value = 'sithum@gmail.com';
+                    passwordField.value = 'sithum@0213';
                     break;
                 case 2:
                     emailField.value = 'vidura@gmail.com';
@@ -276,7 +259,7 @@
                     emailField.value = 'haritha@gmail.com';
                     passwordField.value = 'haritha@2003';
                     break;
-            }*/
+            }
         }
         
         // Toggle password visibility
