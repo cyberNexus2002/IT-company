@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusTech | IT Solutions & Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #A855F7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1E3A8A 0%, #111827 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #4F46E5, #A855F7);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+        
+        .scroll-down {
+            animation: bounce 2.5s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+        
+        .tech-stack-item {
+            transition: all 0.4s ease;
+        }
+        
+        .tech-stack-item:hover {
+            transform: scale(1.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-input {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+            border-color: #4F46E5;
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #4F46E5;
+            transform: translateX(8px);
+        }
+
+        /* New parallax effect for hero */
+        .parallax-bg {
+            background: url('https://images.unsplash.com/photo-1639322537228-f7144f670b9e') no-repeat center center;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(1.1);
+            transition: transform 0.1s ease;
+        }
+        
+        .hero-section:hover .parallax-bg {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-95 backdrop-blur-md z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-3xl font-extrabold gradient-text">NexusTech</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#home" class="nav-link text-gray-900 text-base font-semibold hover:text-indigo-600">Home</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Services</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">About</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Our Work</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Contact</a>
+                    <a href="#contact" class="inline-flex items-center px-5 py-2.5 border border-transparent text-base font-semibold rounded-full text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg transform hover:scale-105 transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-indigo-600 focus:outline-none">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white shadow-2xl rounded-b-2xl">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#home" class="block px-4 py-3 rounded-lg text-base font-semibold text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">Home</a>
+                <a href="#services" class="block px-4 py-3 rounded-lg text-base font-semibold text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">Services</a>
+                <a href="#about" class="block px-4 py-3 rounded-lg text-base font-semibold text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">About</a>
+                <a href="#work" class="block px-4 py-3 rounded-lg text-base font-semibold text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">Our Work</a>
+                <a href="#contact" class="block px-4 py-3 rounded-lg text-base font-semibold text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">Contact</a>
+                <a href="#contact" class="block px-4 py-3 rounded-lg text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative h-screen flex items-center justify-center text-white overflow-hidden">
+        <div class="parallax-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/80 to-gray-900/90"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                        <span class="block">Transform Your</span>
+                        <span class="block gradient-text">Digital Future</span>
+                    </h1>
+                    <p class="mt-6 text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto lg:mx-0">
+                        Empowering businesses with innovative IT solutions to thrive in the digital age.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start">
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-2xl transform hover:scale-105 transition-all duration-300">
+                            Start Your Project
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-indigo-600 bg-white hover:bg-gray-100 shadow-lg transform hover:scale-105 transition-all duration-300">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex lg:col-span-5 items-center justify-center">
+                    <div class="relative w-full max-w-md animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 opacity-30 rounded-3xl"></div>
+                        <div class="relative bg-white bg-opacity-10 rounded-3xl p-12 backdrop-blur-lg">
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-code text-8xl gradient-text"></i>
+                            </div>
+                            <div class="absolute top-10 left-6 w-20 h-20 bg-white bg-opacity-20 rounded-full animate-pulse-slow"></div>
+                            <div class="absolute bottom-10 right-6 w-20 h-20 bg-white bg-opacity-20 rounded-full animate-pulse-slow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <a href="#services" class="scroll-down text-3xl text-white hover:text-indigo-300 transition-colors">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-base font-semibold uppercase text-gray-600 tracking-widest">
+                Trusted by Global Innovators
+            </p>
+            <div class="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5">
+                <div class="flex justify-center items-center">
+                    <img class="h-12 opacity-70 hover:opacity-100 transition-opacity duration-300" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                </div>
+                <div class="flex justify-center items-center">
+                    <img class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_logo.svg" alt="Microsoft">
+                </div>
+                <div class="flex justify-center items-center">
+                    <img class="h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Amazon_logo.svg" alt="Amazon">
+                </div>
+                <div class="flex justify-center items-center">
+                    <img class="h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_Web_Services_Logo.svg" alt="AWS">
+                </div>
+                <div class="flex justify-center items-center">
+                    <img class="h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Salesforce_logo.svg" alt="Salesforce">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive IT solutions designed to accelerate your business growth.
+                </p>
+            </div>
+            <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-indigo-50 rounded-full mb-6">
+                            <div class="service-icon text-indigo-600 text-2xl">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Software Development</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Bespoke software solutions crafted to optimize your operations and boost efficiency.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-purple-50 rounded-full mb-6">
+                            <div class="service-icon text-purple-600 text-2xl">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Engaging iOS and Android apps designed to captivate users and drive growth.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-emerald-50 rounded-full mb-6">
+                            <div class="service-icon text-emerald-600 text-2xl">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Solutions</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Scalable cloud infrastructure to enhance performance and reduce costs.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-rose-50 rounded-full mb-6">
+                            <div class="service-icon text-rose-600 text-2xl">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cybersecurity</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Robust security solutions to safeguard your digital assets from threats.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-amber-50 rounded-full mb-6">
+                            <div class="service-icon text-amber-600 text-2xl">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">AI & Machine Learning</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Intelligent systems for automation and actionable insights from data.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-cyan-50 rounded-full mb-6">
+                            <div class="service-icon text-cyan-600 text-2xl">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Data Analytics</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Advanced analytics to transform data into strategic business intelligence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                        <img class="w-full h-auto" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Our team">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-600 to-purple-500 opacity-25"></div>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 gap-6">
+                        <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                            <div class="text-4xl font-extrabold gradient-text mb-2">10+</div>
+                            <div class="text-gray-600 font-medium">Years Experience</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+                            <div class="text-4xl font-extrabold gradient-text mb-2">200+</div>
+                            <div class="text-gray-600 font-medium">Projects Completed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 lg:col-span-7">
+                    <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                        About <span class="gradient-text">NexusTech</span>
+                    </h2>
+                    <p class="mt-6 text-xl text-gray-600 leading-relaxed">
+                        Since 2012, NexusTech has evolved from a visionary startup to a global leader in IT solutions, driving digital transformation with innovative technology.
+                    </p>
+                    <div class="mt-10 space-y-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-50 rounded-full p-4">
+                                <i class="fas fa-bullseye text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Our Mission</h3>
+                                <p class="mt-2 text-gray-600 leading-relaxed">
+                                    Empowering businesses with scalable, secure, and innovative technology solutions.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-purple-50 rounded-full p-4">
+                                <i class="fas fa-eye text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Our Vision</h3>
+                                <p class="mt-2 text-gray-600 leading-relaxed">
+                                    To be the trusted global partner for businesses, known for excellence and innovation.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-emerald-50 rounded-full p-4">
+                                <i class="fas fa-hand-holding-heart text-emerald-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Our Values</h3>
+                                <p class="mt-2 text-gray-600 leading-relaxed">
+                                    Integrity, Innovation, Collaboration, and Customer Success drive everything we do.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    Our <span class="gradient-text">Technology Stack</span>
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Cutting-edge technologies to deliver modern, scalable solutions.
+                </p>
+            </div>
+            <div class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">React</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Node.js</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Python</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">AWS</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/docker.svg" alt="Docker" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Docker</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/kubernetes.svg" alt="Kubernetes" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Kubernetes</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/tensorflow-2.svg" alt="TensorFlow" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">TensorFlow</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Flutter</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Angular</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="Django" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">Django</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">PostgreSQL</span>
+                </div>
+                <div class="tech-stack-item bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
+                    <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB" class="h-12 w-auto">
+                    <span class="mt-3 text-sm font-semibold text-gray-700">MongoDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    Our <span class="gradient-text">Work</span>
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our recent projects and their impact on business success.
+                </p>
+            </div>
+            <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-56 overflow-hidden">
+                        <img class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 1">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-600 to-purple-500 opacity-40"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-full">
+                                <i class="fas fa-chart-line text-indigo-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-sm font-semibold text-indigo-600">Data Analytics</span>
+                            </div>
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-gray-900">Enterprise Analytics Platform</h3>
+                        <p class="mt-3 text-gray-600 leading-relaxed">
+                            A robust analytics solution that boosted efficiency by 35% for a Fortune 500 company.
+                        </p>
+                        <div class="mt-5">
+                            <a href="#" class="text-sm font-semibold gradient-text hover:underline">View Case Study →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-56 overflow-hidden">
+                        <img class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1555774698-0f77e70ac5fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 2">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-600 to-purple-500 opacity-40"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-mobile-alt text-purple-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-sm font-semibold text-purple-600">Mobile App</span>
+                            </div>
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-gray-900">Health & Fitness App</h3>
+                        <p class="mt-3 text-gray-600 leading-relaxed">
+                            An AI-powered fitness app with over 1M downloads in 6 months.
+                        </p>
+                        <div class="mt-5">
+                            <a href="#" class="text-sm font-semibold gradient-text hover:underline">View Case Study →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-56 overflow-hidden">
+                        <img class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 3">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-600 to-purple-500 opacity-40"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-emerald-100 p-3 rounded-full">
+                                <i class="fas fa-cloud text-emerald-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <span class="text-sm font-semibold text-emerald-600">Cloud Migration</span>
+                            </div>
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-gray-900">Legacy System Modernization</h3>
+                        <p class="mt-3 text-gray-600 leading-relaxed">
+                            Migrated legacy systems to AWS, cutting costs by 40% and enhancing performance.
+                        </p>
+                        <div class="mt-5">
+                            <a href="#" class="text-sm font-semibold gradient-text hover:underline">View Case Study →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-full text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg transform hover:scale-105 transition-all duration-300">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Hear from our clients about their experience with NexusTech.
+                </p>
+            </div>
+            <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-md">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-14 w-14 rounded-full border-2 border-indigo-100" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Sarah Johnson</h3>
+                            <p class="text-gray-600">CTO, TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-gray-600 italic leading-relaxed">
+                            "NexusTech's cloud solutions transformed our infrastructure, delivering exceptional results with professionalism."
+                        </p>
+                    </div>
+                    <div class="mt-6 flex">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-md">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-14 w-14 rounded-full border-2 border-indigo-100" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Michael Chen</h3>
+                            <p class="text-gray-600">CEO, Finova</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-gray-600 italic leading-relaxed">
+                            "The custom software from NexusTech streamlined our operations with outstanding support."
+                        </p>
+                    </div>
+                    <div class="mt-6 flex">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-md">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-14 w-14 rounded-full border-2 border-indigo-100" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez">
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Emma Rodriguez</h3>
+                            <p class="text-gray-600">Product Manager, HealthPlus</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-gray-600 italic leading-relaxed">
+                            "NexusTech's mobile app exceeded our KPIs with a seamless and efficient development process."
+                        </p>
+                    </div>
+                    <div class="mt-6 flex">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                        <i class="fas fa-star text-amber-400 ml-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <h2 class="text-4xl font-extrabold sm:text-5xl">
+                        Ready to Elevate Your Business?
+                    </h2>
+                    <p class="mt-6 text-xl text-indigo-100 leading-relaxed">
+                        Let's collaborate to create innovative solutions tailored to your digital goals.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start">
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-indigo-600 bg-white hover:bg-gray-100 shadow-lg transform hover:scale-105 transition-all duration-300">
+                            Get Started
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-white bg-indigo-700 bg-opacity-70 hover:bg-opacity-80 shadow-lg transform hover:scale-105 transition-all duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 lg:col-span-5">
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-6">Why NexusTech?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-check-circle text-indigo-300"></i>
+                                </div>
+                                <p class="ml-4 text-indigo-100">Over a decade of industry expertise</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-check-circle text-indigo-300"></i>
+                                </div>
+                                <p class="ml-4 text-indigo-100">Certified technology professionals</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-check-circle text-indigo-300"></i>
+                                </div>
+                                <p class="ml-4 text-indigo-100">Proven success across industries</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-check-circle text-indigo-300"></i>
+                                </div>
+                                <p class="ml-4 text-indigo-100">Dedicated support and maintenance</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-check-circle text-indigo-300"></i>
+                                </div>
+                                <p class="ml-4 text-indigo-100">Flexible and competitive pricing</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+                <div class="lg:col-span-5">
+                    <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                        Get In <span class="gradient-text">Touch</span>
+                    </h2>
+                    <p class="mt-6 text-xl text-gray-600 leading-relaxed">
+                        Ready to start your project or learn more? Contact us, and we'll respond within 24 hours.
+                    </p>
+                    <div class="mt-10 space-y-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-50 rounded-full p-4">
+                                <i class="fas fa-map-marker-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Our Office</h3>
+                                <p class="mt-2 text-gray-600">
+                                    123 Tech Street, Silicon Valley<br>
+                                    San Francisco, CA 94107
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-purple-50 rounded-full p-4">
+                                <i class="fas fa-envelope text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Email Us</h3>
+                                <p class="mt-2 text-gray-600">
+                                    info@nexustech.com<br>
+                                    sales@nexustech.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-emerald-50 rounded-full p-4">
+                                <i class="fas fa-phone-alt text-emerald-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-semibold text-gray-900">Call Us</h3>
+                                <p class="mt-2 text-gray-600">
+                                    +1 (555) 123-4567<br>
+                                    Mon-Fri, 9am-6pm PST
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 lg:col-span-7">
+                    <div class="bg-white shadow-2xl rounded-2xl overflow-hidden">
+                        <div class="px-8 py-10 sm:p-12">
+                            <div onSubmit="handleSubmit(event)">
+                                <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                                    <div>
+                                        <label for="first-name" class="block text-sm font-semibold text-gray-700">First name</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="last-name" class="block text-sm font-semibold text-gray-700">Last name</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+                                        <div class="mt-2">
+                                            <input id="email" name="email" type="email" autocomplete="email" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="phone" class="block text-sm font-semibold text-gray-700">Phone (optional)</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="phone" id="phone" autocomplete="tel" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="subject" class="block text-sm font-semibold text-gray-700">Subject</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="subject" id="subject" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="message" class="block text-sm font-semibold text-gray-700">Message</label>
+                                        <div class="mt-2">
+                                            <textarea id="message" name="message" rows="5" class="contact-input py-3 px-4 block w-full shadow-sm border-gray-300 rounded-lg"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <button type="submit" class="w-full inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg transform hover:scale-105 transition-all duration-300">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2">
+                    <h3 class="text-3xl font-extrabold gradient-text mb-4">NexusTech</h3>
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                        Driving business success with innovative IT solutions.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 text-xl transform hover:scale-110 transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 text-xl transform hover:scale-110 transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 text-xl transform hover:scale-110 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 text-xl transform hover:scale-110 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 text-xl transform hover:scale-110 transition-all">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-widest uppercase mb-4">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Custom Software</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Mobile Development</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Cloud Solutions</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Cybersecurity</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">AI & ML</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-widest uppercase mb-4">Company</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">About Us</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Careers</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Blog</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Press</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Partners</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-widest uppercase mb-4">Legal</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Privacy</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Terms</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Cookie Policy</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">GDPR</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 text-base hover:text-indigo-400">Licenses</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-base">
+                    © 2025 NexusTech. All rights reserved.
+                </p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 text-base footer-link">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 text-base footer-link">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 text-base footer-link">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                document.querySelector('.mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Navbar shadow and transparency on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-2xl', 'bg-white');
+                nav.classList.remove('bg-opacity-95');
+            } else {
+                nav.classList.remove('shadow-2xl');
+                nav.classList.add('bg-opacity-95');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    entry.target.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.service-card, .tech-stack-item, .testimonial-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px) scale(0.95)';
+            observer.observe(element);
+        });
+
+        // Form submission handler
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will respond within 24 hours.');
+            e.target.closest('div').querySelector('form').reset();
+        }
+
+        // Parallax effect on mouse move
+        const heroSection = document.querySelector('.hero-section');
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            const parallax = document.querySelector('.parallax-bg');
+            parallax.style.transform = `scale(1.1) translate(${x * 20}px, ${y * 20}px)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            const parallax = document.querySelector('.parallax-bg');
+            parallax.style.transform = 'scale(1.1)';
+        });
+    </script>
+</body>
+</html>
